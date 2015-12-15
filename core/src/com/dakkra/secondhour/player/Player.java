@@ -4,7 +4,7 @@ public class Player {
     //Put Sprites and other data here
 
 
-    public Player(){
+    public Player() {
         //Init data here
     }
 
