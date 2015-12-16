@@ -54,7 +54,9 @@ public class Enemy {
         selfBox.getCenter(selfPosition);
 
         Vector2 deltaDeg = new Vector2((selfPosition.x - playerPosition.x), (selfPosition.y - playerPosition.y)).nor();
-        sprite.setRotation(VectorUtil.vectorToDegree(deltaDeg));
+        float rot = VectorUtil.vectorToDegree(deltaDeg);
+        System.out.println(rot);
+        sprite.setRotation(rot);
         sprite.draw(batch);
     }
 

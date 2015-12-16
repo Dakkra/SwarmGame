@@ -4,6 +4,8 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.*;
 import com.dakkra.secondhour.Enemy.Enemy;
@@ -32,10 +34,10 @@ public class SecondHour extends ApplicationAdapter {
         mainCamera = new OrthographicCamera();
         mainCamera.setToOrtho(false);
         mainViewport = new FitViewport(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, mainCamera);
-        enemies.add(new Enemy(player));
-        enemies.add(new Enemy(player));
-        enemies.add(new Enemy(player));
-        enemies.add(new Enemy(player));
+//        enemies.add(new Enemy(player));
+//        enemies.add(new Enemy(player));
+//        enemies.add(new Enemy(player));
+//        enemies.add(new Enemy(player));
         enemies.add(new Enemy(player));
     }
 
@@ -50,13 +52,16 @@ public class SecondHour extends ApplicationAdapter {
 
     private void runUpdates() {
         player.updatePlayer();
+        Rectangle playerBox = player.getBounds();
+        Vector2 playerCenter = new Vector2(0, 0);
+        playerBox.getCenter(playerCenter);
     }
 
     private void runBatch() {
         spriteBatch.setProjectionMatrix(mainCamera.combined);
         spriteBatch.begin();
         player.drawPlayer(spriteBatch);
-        for (Enemy e : enemies){
+        for (Enemy e : enemies) {
             e.drawAndUpdateSelf(spriteBatch);
         }
         spriteBatch.end();
