@@ -2,16 +2,9 @@ package com.dakkra.secondhour;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.*;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.LongMap;
 import com.badlogic.gdx.utils.viewport.*;
 import com.dakkra.secondhour.Enemy.Enemy;
 import com.dakkra.secondhour.player.Player;
@@ -64,7 +57,7 @@ public class SecondHour extends ApplicationAdapter {
         spriteBatch.begin();
         player.drawPlayer(spriteBatch);
         for (Enemy e : enemies){
-            e.drawSelf(spriteBatch);
+            e.drawAndUpdateSelf(spriteBatch);
         }
         spriteBatch.end();
     }
