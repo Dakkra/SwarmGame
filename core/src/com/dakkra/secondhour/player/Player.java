@@ -11,7 +11,7 @@ import com.dakkra.secondhour.VectorUtil;
 
 public class Player {
 
-    private final float PLAYER_SPEED = 3f;
+    final float PLAYER_SPEED = 3f;
     private Sprite sprite;
     private Array<Spit> spits = new Array<Spit>();
 
