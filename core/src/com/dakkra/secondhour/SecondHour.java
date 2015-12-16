@@ -16,7 +16,7 @@ import com.dakkra.secondhour.player.Player;
 
 public class SecondHour extends ApplicationAdapter {
 
-    private SpriteBatch spriteBatch;
+    public SpriteBatch spriteBatch;
     private OrthographicCamera mainCamera;
     private Viewport mainViewport;
     private Player player;
@@ -47,7 +47,7 @@ public class SecondHour extends ApplicationAdapter {
     }
 
     private void runUpdates() {
-        player.movePlayer();
+        player.updatePlayer();
     }
 
     private void runBatch() {
