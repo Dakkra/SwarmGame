@@ -11,7 +11,7 @@ public class VectorUtil {
     }
 
     public static float vectorToDegree(Vector2 vec) {
-        return (float)Math.acos(vec.x)*(float)(180/Math.PI);
+        return -(float)Math.acos(vec.x)*(float)(180/Math.PI);
     }
 
 }
