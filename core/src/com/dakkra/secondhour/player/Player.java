@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.dakkra.secondhour.VectorUtil;
@@ -61,6 +62,7 @@ public class Player {
 
     private void fireBullet() {
         spits.add(new Spit((int) sprite.getX(), (int) sprite.getY(), sprite.getRotation()));
+        System.out.println("Player:"+sprite.getX()+","+sprite.getY());
     }
 
     public void drawPlayer(SpriteBatch batch) {
@@ -69,6 +71,10 @@ public class Player {
             i.updatePosition();
             i.drawSelf(batch);
         }
+    }
+
+    public Rectangle getBounds() {
+        return sprite.getBoundingRectangle();
     }
 
 }
