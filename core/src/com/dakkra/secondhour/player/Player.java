@@ -73,8 +73,6 @@ public class Player extends Character {
             }
         }
 
-        System.out.println(game.enemies.size);
-
         for (int i = 0; i < game.enemies.size; i++) {
             Vector2 enemyPos = new Vector2(0, 0);
             if (sprite.getBoundingRectangle().contains(game.enemies.get(i).getBox().getCenter(enemyPos))) {
