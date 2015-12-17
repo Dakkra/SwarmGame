@@ -27,9 +27,6 @@ public class SecondHour extends ApplicationAdapter {
 
     @Override
     public void create() {
-
-        Vector2 test = new Vector2(4, 5);
-
         Gdx.graphics.setVSync(true);
         player = new Player(this);
         enemies = new Array<Enemy>();
