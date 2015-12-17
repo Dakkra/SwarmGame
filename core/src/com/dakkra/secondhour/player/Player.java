@@ -20,6 +20,7 @@ public class Player extends Character {
 
     public Player(SecondHour game) {
         this.game = game;
+        this.health = 30f;
         sprite = new Sprite();
         sprite = new Sprite(new Texture(Gdx.files.internal("sprites/player.png")));
         sprite.setPosition(Math.round((Gdx.graphics.getWidth() / 2) - sprite.getTexture().getWidth() / 2), Math.round((Gdx.graphics.getHeight() / 2) - sprite.getTexture().getHeight() / 2));

@@ -9,7 +9,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.dakkra.secondhour.Character;
 import com.dakkra.secondhour.VectorUtil;
 import com.dakkra.secondhour.player.Player;
-import com.dakkra.secondhour.projectile.Projectile;
 
 public class Enemy extends Character {
 
@@ -59,7 +58,7 @@ public class Enemy extends Character {
             Vector2 deltaDeg = new Vector2((selfPosition.x - playerBox.x), (selfPosition.y - playerPosition.y)).nor();
             float rot = VectorUtil.vectorToDegree(deltaDeg);
             sprite.setRotation(rot);
-            sprite.translate(-deltaDeg.x*3, -deltaDeg.y*3);
+            sprite.translate(-deltaDeg.x*1, -deltaDeg.y*1);
             sprite.draw(batch);
         }
     }
