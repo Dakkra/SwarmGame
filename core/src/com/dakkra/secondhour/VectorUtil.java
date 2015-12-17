@@ -11,7 +11,7 @@ public class VectorUtil {
     }
 
     public static float vectorToDegree(Vector2 vec) {
-        float atan = (float) Math.atan(vec.y/vec.x) * (float) (180 / Math.PI);
+        float atan = (float) Math.atan2(vec.y, vec.x) * (float) (180 / Math.PI);
         return atan;
     }
 

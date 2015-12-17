@@ -10,13 +10,13 @@ import com.dakkra.secondhour.Character;
 import com.dakkra.secondhour.VectorUtil;
 import com.dakkra.secondhour.player.Player;
 
+import java.util.Random;
+
 public class Enemy extends Character {
 
     private Player player;
     private float speed;
     private float rotationSpeed;
-    private float maxRotationSpeed = 5;
-    private float minRotationSpeed = 2;
     private float maxSpeed = 15;
     private float minSpeed = 5;
 
@@ -30,8 +30,8 @@ public class Enemy extends Character {
     private void spawn() {
         boolean done = false;
         while (!done) {
-            double r1 = Math.random();
-            double r2 = Math.random();
+            double r1 = Math.random() * 2 - 1;
+            double r2 = Math.random() * 2 - 1;
             int halfW = Gdx.graphics.getWidth() / 2;
             int halfH = Gdx.graphics.getHeight() / 2;
             int posX = (int) Math.round(Gdx.graphics.getWidth() * r1 / 2) + (halfW / 2);
@@ -55,10 +55,10 @@ public class Enemy extends Character {
             playerBox.getCenter(playerPosition);
             selfBox.getCenter(selfPosition);
 
-            Vector2 deltaDeg = new Vector2((selfPosition.x - playerBox.x), (selfPosition.y - playerPosition.y)).nor();
-            float rot = VectorUtil.vectorToDegree(deltaDeg);
+            Vector2 deltaVec = new Vector2(-(selfPosition.x - playerPosition.x), -(selfPosition.y - playerPosition.y)).nor();
+            float rot = VectorUtil.vectorToDegree(deltaVec);
             sprite.setRotation(rot);
-            sprite.translate(-deltaDeg.x*1, -deltaDeg.y*1);
+            sprite.translate(deltaVec.x * 1, deltaVec.y * 1);
             sprite.draw(batch);
         }
     }
