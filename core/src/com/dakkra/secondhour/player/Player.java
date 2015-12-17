@@ -8,15 +8,18 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.dakkra.secondhour.Character;
+import com.dakkra.secondhour.SecondHour;
 import com.dakkra.secondhour.VectorUtil;
 
-public class Player {
+public class Player extends Character {
 
     final float PLAYER_SPEED = 3f;
-    private Sprite sprite;
     private Array<Spit> spits = new Array<Spit>();
+    private SecondHour game;
 
-    public Player() {
+    public Player(SecondHour game) {
+        this.game = game;
         sprite = new Sprite();
         sprite = new Sprite(new Texture(Gdx.files.internal("sprites/player.png")));
         sprite.setPosition(Math.round((Gdx.graphics.getWidth() / 2) - sprite.getTexture().getWidth() / 2), Math.round((Gdx.graphics.getHeight() / 2) - sprite.getTexture().getHeight() / 2));
@@ -58,11 +61,16 @@ public class Player {
             fireBullet();
         }
 
+        for (int i = 0; i < spits.size; i++) {
+            if (spits.get(i).isUsed()) {
+                spits.removeIndex(i);
+            }
+        }
+
     }
 
     private void fireBullet() {
-        spits.add(new Spit((int) sprite.getX(), (int) sprite.getY(), sprite.getRotation()));
-        System.out.println("Player:"+sprite.getX()+","+sprite.getY());
+        spits.add(new Spit((int) sprite.getX(), (int) sprite.getY(), sprite.getRotation(), this, game));
     }
 
     public void drawPlayer(SpriteBatch batch) {

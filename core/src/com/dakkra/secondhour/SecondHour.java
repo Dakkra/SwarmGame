@@ -13,11 +13,11 @@ import com.dakkra.secondhour.player.Player;
 
 public class SecondHour extends ApplicationAdapter {
 
-    public SpriteBatch spriteBatch;
+    private SpriteBatch spriteBatch;
     private OrthographicCamera mainCamera;
     private Viewport mainViewport;
-    private Player player;
-    private Array<Enemy> enemies;
+    public Player player;
+    public Array<Enemy> enemies;
 
     @Override
     public void resize(int width, int height) {
@@ -28,10 +28,10 @@ public class SecondHour extends ApplicationAdapter {
     @Override
     public void create() {
 
-        Vector2 test = new Vector2(4,5);
+        Vector2 test = new Vector2(4, 5);
 
         Gdx.graphics.setVSync(true);
-        player = new Player();
+        player = new Player(this);
         enemies = new Array<Enemy>();
         spriteBatch = new SpriteBatch();
         mainCamera = new OrthographicCamera();
@@ -64,9 +64,15 @@ public class SecondHour extends ApplicationAdapter {
         spriteBatch.setProjectionMatrix(mainCamera.combined);
         spriteBatch.begin();
         player.drawPlayer(spriteBatch);
+        for (int i = 0; i < enemies.size; i++) {
+            if (!enemies.get(i).isAlive) {
+                enemies.removeIndex(i);
+            }
+        }
         for (Enemy e : enemies) {
             e.drawAndUpdateSelf(spriteBatch);
         }
         spriteBatch.end();
     }
+
 }

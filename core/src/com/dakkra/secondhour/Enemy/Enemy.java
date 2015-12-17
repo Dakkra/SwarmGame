@@ -6,12 +6,13 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.dakkra.secondhour.Character;
 import com.dakkra.secondhour.VectorUtil;
 import com.dakkra.secondhour.player.Player;
+import com.dakkra.secondhour.projectile.Projectile;
 
-public class Enemy {
+public class Enemy extends Character {
 
-    private Sprite sprite;
     private Player player;
     private float speed;
     private float rotationSpeed;
@@ -46,17 +47,19 @@ public class Enemy {
 
     public void drawAndUpdateSelf(SpriteBatch batch) {
 
-        Rectangle playerBox = player.getBounds();
-        Rectangle selfBox = sprite.getBoundingRectangle();
-        Vector2 playerPosition = new Vector2(0, 0);
-        Vector2 selfPosition = new Vector2(0, 0);
-        playerBox.getCenter(playerPosition);
-        selfBox.getCenter(selfPosition);
+        if (isAlive) {
+            Rectangle playerBox = player.getBounds();
+            Rectangle selfBox = sprite.getBoundingRectangle();
+            Vector2 playerPosition = new Vector2(0, 0);
+            Vector2 selfPosition = new Vector2(0, 0);
+            playerBox.getCenter(playerPosition);
+            selfBox.getCenter(selfPosition);
 
-        Vector2 deltaDeg = new Vector2((playerPosition.x - selfPosition.x), (selfPosition.y - playerPosition.y)).nor();
-        float rot = VectorUtil.vectorToDegree(deltaDeg);
-        sprite.setRotation(rot);
-        sprite.draw(batch);
+            Vector2 deltaDeg = new Vector2((selfPosition.x - playerBox.x), (selfPosition.y - playerPosition.y)).nor();
+            float rot = VectorUtil.vectorToDegree(deltaDeg);
+            sprite.setRotation(rot);
+            sprite.draw(batch);
+        }
     }
 
 }
