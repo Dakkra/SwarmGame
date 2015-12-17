@@ -34,8 +34,6 @@ public class SecondHour extends ApplicationAdapter {
         mainCamera = new OrthographicCamera();
         mainCamera.setToOrtho(false);
         mainViewport = new FitViewport(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, mainCamera);
-//        enemies.add(new Enemy(player));
-//        enemies.add(new Enemy(player));
         enemies.add(new Enemy(player));
         enemies.add(new Enemy(player));
         enemies.add(new Enemy(player));

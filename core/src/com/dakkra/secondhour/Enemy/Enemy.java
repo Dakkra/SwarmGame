@@ -10,15 +10,10 @@ import com.dakkra.secondhour.Character;
 import com.dakkra.secondhour.VectorUtil;
 import com.dakkra.secondhour.player.Player;
 
-import java.util.Random;
 
 public class Enemy extends Character {
 
     private Player player;
-    private float speed;
-    private float rotationSpeed;
-    private float maxSpeed = 15;
-    private float minSpeed = 5;
 
     public Enemy(Player player) {
         this.player = player;

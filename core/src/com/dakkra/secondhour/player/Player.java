@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.dakkra.secondhour.Character;
+import com.dakkra.secondhour.Enemy.Enemy;
 import com.dakkra.secondhour.SecondHour;
 import com.dakkra.secondhour.VectorUtil;
 
@@ -28,6 +29,10 @@ public class Player extends Character {
     }
 
     public void updatePlayer() {
+        if (!isAlive) {
+            //End game
+            System.exit(0);
+        }
         int up = 0;
         int down = 0;
         int left = 0;
@@ -65,6 +70,16 @@ public class Player extends Character {
         for (int i = 0; i < spits.size; i++) {
             if (spits.get(i).isUsed()) {
                 spits.removeIndex(i);
+            }
+        }
+
+        System.out.println(game.enemies.size);
+
+        for (int i = 0; i < game.enemies.size; i++) {
+            Vector2 enemyPos = new Vector2(0, 0);
+            if (sprite.getBoundingRectangle().contains(game.enemies.get(i).getBox().getCenter(enemyPos))) {
+                takeDamage(5);
+                game.enemies.get(i).takeDamage(10);
             }
         }
 
