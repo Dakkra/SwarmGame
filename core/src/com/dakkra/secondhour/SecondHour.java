@@ -65,9 +65,7 @@ public class SecondHour extends ApplicationAdapter {
                 enemies.add(new Enemy(player));
                 enemies.add(new Enemy(player));
             }
-        }
-        for (Enemy e : enemies) {
-            e.drawAndUpdateSelf(spriteBatch);
+            enemies.get(i).drawAndUpdateSelf(spriteBatch);
         }
         spriteBatch.end();
     }

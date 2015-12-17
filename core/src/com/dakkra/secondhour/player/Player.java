@@ -17,11 +17,11 @@ public class Player extends Character {
 
     final float PLAYER_SPEED = 3f;
     private Array<Spit> spits = new Array<Spit>();
-    private SecondHour game;
+    public SecondHour game;
 
     public Player(SecondHour game) {
         this.game = game;
-        this.health = 30f;
+        this.health = 100f;
         sprite = new Sprite();
         sprite = new Sprite(new Texture(Gdx.files.internal("sprites/player.png")));
         sprite.setPosition(Math.round((Gdx.graphics.getWidth() / 2) - sprite.getTexture().getWidth() / 2), Math.round((Gdx.graphics.getHeight() / 2) - sprite.getTexture().getHeight() / 2));
