@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Timer;
 import com.dakkra.secondhour.Character;
 import com.dakkra.secondhour.VectorUtil;
 import com.dakkra.secondhour.player.Player;
@@ -14,12 +15,19 @@ import com.dakkra.secondhour.player.Player;
 public class Enemy extends Character {
 
     private Player player;
+    private float minSpeed = 0.4f;
+    private float maxSpeed = 1.6f;
+    private float speed;
+    private float maxFireSpeed = 5f;
+    private float minFireSpeed = 0.5f;
+    private Timer fireTimer;
 
     public Enemy(Player player) {
         this.player = player;
+        fireTimer = new Timer();
         sprite = new Sprite(new Texture("sprites/enemy.png"));
         spawn();
-
+        speed = (float) (Math.random() * (maxSpeed - minSpeed)) + minSpeed;
     }
 
     private void spawn() {
@@ -53,9 +61,20 @@ public class Enemy extends Character {
             Vector2 deltaVec = new Vector2(-(selfPosition.x - playerPosition.x), -(selfPosition.y - playerPosition.y)).nor();
             float rot = VectorUtil.vectorToDegree(deltaVec);
             sprite.setRotation(rot);
-            sprite.translate(deltaVec.x * 1, deltaVec.y * 1);
+            sprite.translate(deltaVec.x * speed, deltaVec.y * speed);
             sprite.draw(batch);
         }
     }
+
+    private void shootAtPlayer () {
+
+    }
+
+    private Timer.Task task = new Timer.Task() {
+        @Override
+        public void run() {
+
+        }
+    };
 
 }
