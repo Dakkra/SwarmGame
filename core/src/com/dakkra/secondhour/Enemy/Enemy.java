@@ -43,6 +43,7 @@ public class Enemy extends Character {
                 done = true;
             }
         }
+        System.out.println("Enemy spawn!");
     }
 
     public void drawAndUpdateSelf(SpriteBatch batch) {
@@ -58,6 +59,7 @@ public class Enemy extends Character {
             Vector2 deltaDeg = new Vector2((selfPosition.x - playerBox.x), (selfPosition.y - playerPosition.y)).nor();
             float rot = VectorUtil.vectorToDegree(deltaDeg);
             sprite.setRotation(rot);
+            sprite.translate(-deltaDeg.x*3, -deltaDeg.y*3);
             sprite.draw(batch);
         }
     }

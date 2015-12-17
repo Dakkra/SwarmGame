@@ -64,6 +64,8 @@ public class SecondHour extends ApplicationAdapter {
         for (int i = 0; i < enemies.size; i++) {
             if (!enemies.get(i).isAlive) {
                 enemies.removeIndex(i);
+                enemies.add(new Enemy(player));
+                enemies.add(new Enemy(player));
             }
         }
         for (Enemy e : enemies) {
