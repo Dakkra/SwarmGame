@@ -29,8 +29,8 @@ public class Enemy extends Character {
         sprite = new Sprite(new Texture("sprites/enemy.png"));
         spawn();
         speed = (float) (Math.random() * (maxSpeed - minSpeed)) + minSpeed;
-        fireTimer.scheduleTask(task, 0, (float) (4 * Math.random()) + 1);
-        fireTimer.start();
+//        fireTimer.scheduleTask(task, 0, (float) (4 * Math.random()) + 1);
+//        fireTimer.start();
     }
 
     private void spawn() {

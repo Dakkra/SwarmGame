@@ -12,6 +12,9 @@ import com.dakkra.secondhour.Character;
 import com.dakkra.secondhour.Enemy.Enemy;
 import com.dakkra.secondhour.SecondHour;
 import com.dakkra.secondhour.VectorUtil;
+import jdk.nashorn.internal.scripts.JO;
+
+import javax.swing.*;
 
 public class Player extends Character {
 
@@ -31,6 +34,7 @@ public class Player extends Character {
     public void updatePlayer() {
         if (!isAlive) {
             //End game
+            System.out.println("Enemies Killed: " + game.enemiesKilled);
             System.exit(0);
         }
         int up = 0;
@@ -70,6 +74,8 @@ public class Player extends Character {
         for (int i = 0; i < spits.size; i++) {
             if (spits.get(i).isUsed()) {
                 spits.removeIndex(i);
+                health += 3f;
+                game.enemiesKilled += 1;
             }
         }
 

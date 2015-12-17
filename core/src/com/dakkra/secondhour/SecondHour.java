@@ -18,6 +18,7 @@ public class SecondHour extends ApplicationAdapter {
     private Viewport mainViewport;
     public Player player;
     public Array<Enemy> enemies;
+    public int enemiesKilled = 0;
 
     @Override
     public void resize(int width, int height) {
